@@ -1,4 +1,5 @@
 use std::process::Command;
+use assert_cmd::Command as AssertCommand;
 
 #[test]
 fn runs() {
@@ -10,4 +11,10 @@ fn runs() {
 #[test]
 fn works() {
     assert!(true);
+}
+
+#[test]
+fn runs_success() {
+    let mut cmd = AssertCommand::cargo_bin("hello").unwrap();
+    cmd.assert().success();
 }
